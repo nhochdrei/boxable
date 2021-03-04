@@ -90,7 +90,7 @@ BaseTable table = new BaseTable(yStart, yStartNewPage, bottomMargin, tableWidth,
 Row<PDPage> headerRow = table.createRow(15f);
 Cell<PDPage> cell = headerRow.createCell(100, "Awesome Facts About Belgium");
 cell.setFont(PDType1Font.HELVETICA_BOLD);
-cell.setFillColor(Color.BLACK);
+cell.setFillAWTColor(AWTColor.BLACK);
 table.addHeaderRow(headerRow);
 List<String[]> facts = getFacts();
 for (String[] fact : facts) {

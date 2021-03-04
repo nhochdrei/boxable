@@ -290,7 +290,7 @@ public class TableCell<T extends PDPage> extends Cell<T> {
 						if (!onlyCalculateHeight) {
 							PDStreamUtils.rect(tableCellContentStream, cursorX + halfHeight, cursorY,
 									token.getWidth(currentFont) / 1000 * getFontSize(),
-									widthOfSpace / 1000 * getFontSize(), getTextColor());
+									widthOfSpace / 1000 * getFontSize(), getTextAWTColor());
 						}
 						// move cursorY for two characters (one for bullet, one
 						// for space after bullet)
@@ -299,7 +299,7 @@ public class TableCell<T extends PDPage> extends Cell<T> {
 						if (!onlyCalculateHeight) {
 							PDStreamUtils.rect(tableCellContentStream, cursorX, cursorY + halfHeight,
 									token.getWidth(currentFont) / 1000 * getFontSize(),
-									widthOfSpace / 1000 * getFontSize(), getTextColor());
+									widthOfSpace / 1000 * getFontSize(), getTextAWTColor());
 						}
 						// move cursorX for two characters (one for bullet, one
 						// for space after bullet)

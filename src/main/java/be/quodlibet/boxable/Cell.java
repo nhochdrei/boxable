@@ -4,7 +4,7 @@
  */
 package be.quodlibet.boxable;
 
-import java.awt.Color;
+import org.apache.harmony.awt.AWTColor;
 import java.io.IOException;
 
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -25,8 +25,8 @@ public class Cell<T extends PDPage> {
 	private PDFont fontBold = PDType1Font.HELVETICA_BOLD;
 
 	private float fontSize = 8;
-	private Color fillColor;
-	private Color textColor = Color.BLACK;
+	private AWTColor fillAWTColor;
+	private AWTColor textAWTColor = AWTColor.BLACK;
 	private final Row<T> row;
 	private WrappingFunction wrappingFunction;
 	private boolean isHeaderCell = false;
@@ -39,10 +39,10 @@ public class Cell<T extends PDPage> {
 	private float bottomPadding = 5f;
 
 	// default border
-	private LineStyle leftBorderStyle = new LineStyle(Color.BLACK, 1);
-	private LineStyle rightBorderStyle = new LineStyle(Color.BLACK, 1);
-	private LineStyle topBorderStyle = new LineStyle(Color.BLACK, 1);
-	private LineStyle bottomBorderStyle = new LineStyle(Color.BLACK, 1);
+	private LineStyle leftBorderStyle = new LineStyle(AWTColor.BLACK, 1);
+	private LineStyle rightBorderStyle = new LineStyle(AWTColor.BLACK, 1);
+	private LineStyle topBorderStyle = new LineStyle(AWTColor.BLACK, 1);
+	private LineStyle bottomBorderStyle = new LineStyle(AWTColor.BLACK, 1);
 
 	private Paragraph paragraph = null;
 	private float lineSpacing = 1;
@@ -119,48 +119,48 @@ public class Cell<T extends PDPage> {
 
 	/**
 	 * <p>
-	 * Retrieves cell's text {@link Color}. Default color is black.
+	 * Retrieves cell's text {@link AWTColor}. Default color is black.
 	 * </p>
 	 *
-	 * @return {@link Color} of the cell's text
+	 * @return {@link AWTColor} of the cell's text
 	 */
-	public Color getTextColor() {
-		return textColor;
+	public AWTColor getTextAWTColor() {
+		return textAWTColor;
 	}
 
 	/**
 	 * <p>
-	 * Sets cell's text {@link Color}.
+	 * Sets cell's text {@link AWTColor}.
 	 * </p>
 	 *
-	 * @param textColor
-	 *            designated text {@link Color}
+	 * @param textAWTColor
+	 *            designated text {@link AWTColor}
 	 */
-	public void setTextColor(Color textColor) {
-		this.textColor = textColor;
+	public void setTextAWTColor(AWTColor textAWTColor) {
+		this.textAWTColor = textAWTColor;
 	}
 
 	/**
 	 * <p>
-	 * Gets fill (background) {@link Color} for the current cell.
+	 * Gets fill (background) {@link AWTColor} for the current cell.
 	 * </p>
 	 *
-	 * @return Fill {@link Color} for the cell
+	 * @return Fill {@link AWTColor} for the cell
 	 */
-	public Color getFillColor() {
-		return fillColor;
+	public AWTColor getFillAWTColor() {
+		return fillAWTColor;
 	}
 
 	/**
 	 * <p>
-	 * Sets fill (background) {@link Color} for the current cell.
+	 * Sets fill (background) {@link AWTColor} for the current cell.
 	 * </p>
 	 *
-	 * @param fillColor
-	 *            Fill {@link Color} for the cell
+	 * @param fillAWTColor
+	 *            Fill {@link AWTColor} for the cell
 	 */
-	public void setFillColor(Color fillColor) {
-		this.fillColor = fillColor;
+	public void setFillAWTColor(AWTColor fillAWTColor) {
+		this.fillAWTColor = fillAWTColor;
 	}
 
 	/**
@@ -304,18 +304,18 @@ public class Cell<T extends PDPage> {
 			// if it is header cell then use font bold
 			if (isHeaderCell) {
 				if (isTextRotated()) {
-					paragraph = new Paragraph(text, fontBold, fontSize, getInnerHeight(), align, textColor, null,
+					paragraph = new Paragraph(text, fontBold, fontSize, getInnerHeight(), align, textAWTColor, null,
 							wrappingFunction, lineSpacing);
 				} else {
-					paragraph = new Paragraph(text, fontBold, fontSize, getInnerWidth(), align, textColor, null,
+					paragraph = new Paragraph(text, fontBold, fontSize, getInnerWidth(), align, textAWTColor, null,
 							wrappingFunction, lineSpacing);
 				}
 			} else {
 				if (isTextRotated()) {
-					paragraph = new Paragraph(text, font, fontSize, getInnerHeight(), align, textColor, null,
+					paragraph = new Paragraph(text, font, fontSize, getInnerHeight(), align, textAWTColor, null,
 							wrappingFunction, lineSpacing);
 				} else {
-					paragraph = new Paragraph(text, font, fontSize, getInnerWidth(), align, textColor, null,
+					paragraph = new Paragraph(text, font, fontSize, getInnerWidth(), align, textAWTColor, null,
 							wrappingFunction, lineSpacing);
 				}
 			}
@@ -693,8 +693,8 @@ public class Cell<T extends PDPage> {
 		this.font = sourceCell.getFont();// otherwise paragraph gets invalidated
 		this.fontBold = sourceCell.getFontBold();
 		this.fontSize = sourceCell.getFontSize();
-		setFillColor(sourceCell.getFillColor());
-		setTextColor(sourceCell.getTextColor());
+		setFillAWTColor(sourceCell.getFillAWTColor());
+		setTextAWTColor(sourceCell.getTextAWTColor());
 		setAlign(sourceCell.getAlign());
 		setValign(sourceCell.getValign());
 	}
@@ -717,10 +717,10 @@ public class Cell<T extends PDPage> {
 		if (!sourceCell.getFontBold().equals(getFontBold())) {
 			return false;
 		}
-		if (!sourceCell.getFillColor().equals(getFillColor())) {
+		if (!sourceCell.getFillAWTColor().equals(getFillAWTColor())) {
 			return false;
 		}
-		if (!sourceCell.getTextColor().equals(getTextColor())) {
+		if (!sourceCell.getTextAWTColor().equals(getTextAWTColor())) {
 			return false;
 		}
 		if (!sourceCell.getAlign().equals(getAlign())) {

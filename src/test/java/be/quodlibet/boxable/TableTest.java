@@ -3,7 +3,7 @@
  */
 package be.quodlibet.boxable;
 
-import java.awt.Color;
+import org.apache.harmony.awt.AWTColor;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -68,8 +68,8 @@ public class TableTest {
 		Row<PDPage> headerRow = table.createRow(15f);
 		Cell<PDPage> cell = headerRow.createCell(100, "Awesome Facts About Belgium");
 		cell.setFont(PDType1Font.HELVETICA_BOLD);
-		cell.setFillColor(Color.BLACK);
-		cell.setTextColor(Color.WHITE);
+		cell.setFillAWTColor(AWTColor.BLACK);
+		cell.setTextAWTColor(AWTColor.WHITE);
 
 		table.addHeaderRow(headerRow);
 
@@ -87,10 +87,10 @@ public class TableTest {
 		cell = factHeaderrow.createCell((100 / 3f) * 2, "Fact");
 		cell.setFont(PDType1Font.HELVETICA);
 		cell.setFontSize(6);
-		cell.setFillColor(Color.LIGHT_GRAY);
+		cell.setFillAWTColor(AWTColor.LIGHT_GRAY);
 
 		cell = factHeaderrow.createCell((100 / 3f), "Tags");
-		cell.setFillColor(Color.LIGHT_GRAY);
+		cell.setFillAWTColor(AWTColor.LIGHT_GRAY);
 		cell.setFont(PDType1Font.HELVETICA_OBLIQUE);
 		cell.setFontSize(6);
 
@@ -108,7 +108,7 @@ public class TableTest {
 					try {
 						imageFile = new File(
 								TableTest.class.getResource("/" + fact[i].substring("image:".length())).toURI());
-						cell = row.createImageCell((100 / 9f), ImageUtils.readImage(imageFile));
+//						cell = row.createImageCell((100 / 9f), ImageUtils.readImage(imageFile));
 					} catch (final URISyntaxException e) {
 						e.printStackTrace();
 					}
@@ -118,9 +118,9 @@ public class TableTest {
 					cell.setFontSize(6);
 					// Set colors
 					if (fact[i].contains("beer"))
-						cell.setFillColor(Color.yellow);
+						cell.setFillAWTColor(AWTColor.yellow);
 					if (fact[i].contains("champion"))
-						cell.setTextColor(Color.GREEN);
+						cell.setTextAWTColor(AWTColor.GREEN);
 				}
 			}
 		}
@@ -238,8 +238,8 @@ public class TableTest {
 		Row<PDPage> headerRow = table.createRow(15f);
 		Cell<PDPage> cell = headerRow.createCell(100, "Awesome Facts About Belgium");
 		cell.setFont(PDType1Font.HELVETICA_BOLD);
-		cell.setFillColor(Color.BLACK);
-		cell.setTextColor(Color.WHITE);
+		cell.setFillAWTColor(AWTColor.BLACK);
+		cell.setTextAWTColor(AWTColor.WHITE);
 
 		table.addHeaderRow(headerRow);
 
@@ -256,10 +256,10 @@ public class TableTest {
 		cell = factHeaderrow.createCell((100 / 3f) * 2, "Fact");
 		cell.setFont(PDType1Font.HELVETICA);
 		cell.setFontSize(6);
-		cell.setFillColor(Color.LIGHT_GRAY);
+		cell.setFillAWTColor(AWTColor.LIGHT_GRAY);
 
 		cell = factHeaderrow.createCell((100 / 3f), "Tags");
-		cell.setFillColor(Color.LIGHT_GRAY);
+		cell.setFillAWTColor(AWTColor.LIGHT_GRAY);
 		cell.setFont(PDType1Font.HELVETICA_OBLIQUE);
 		cell.setFontSize(6);
 
@@ -283,7 +283,7 @@ public class TableTest {
 					try {
 						imageFile = new File(
 								TableTest.class.getResource("/" + fact[i].substring("image:".length())).toURI());
-						cell = row.createImageCell((100 / 9f), ImageUtils.readImage(imageFile));
+//						cell = row.createImageCell((100 / 9f), ImageUtils.readImage(imageFile));
 					} catch (final URISyntaxException e) {
 						e.printStackTrace();
 					}
@@ -294,9 +294,9 @@ public class TableTest {
 
 					// Set colors
 					if (fact[i].contains("beer"))
-						cell.setFillColor(Color.yellow);
+						cell.setFillAWTColor(AWTColor.yellow);
 					if (fact[i].contains("champion"))
-						cell.setTextColor(Color.GREEN);
+						cell.setTextAWTColor(AWTColor.GREEN);
 				}
 
 			}
@@ -440,8 +440,8 @@ public class TableTest {
 		Row<PDPage> headerRow = table.createRow(15f);
 		Cell<PDPage> cell = headerRow.createCell(100, "Awesome Facts About Belgium");
 		cell.setFont(PDType1Font.HELVETICA_BOLD);
-		cell.setFillColor(Color.BLACK);
-		cell.setTextColor(Color.WHITE);
+		cell.setFillAWTColor(AWTColor.BLACK);
+		cell.setTextAWTColor(AWTColor.WHITE);
 
 		table.addHeaderRow(headerRow);
 
@@ -460,10 +460,10 @@ public class TableTest {
 		cell = factHeaderrow.createCell((100 / 3f) * 2, "Fact");
 		cell.setFont(PDType1Font.HELVETICA);
 		cell.setFontSize(6);
-		cell.setFillColor(Color.LIGHT_GRAY);
+		cell.setFillAWTColor(AWTColor.LIGHT_GRAY);
 
 		cell = factHeaderrow.createCell((100 / 3f), "Tags");
-		cell.setFillColor(Color.LIGHT_GRAY);
+		cell.setFillAWTColor(AWTColor.LIGHT_GRAY);
 		cell.setFont(PDType1Font.HELVETICA_OBLIQUE);
 		cell.setFontSize(6);
 
@@ -489,7 +489,7 @@ public class TableTest {
 					try {
 						imageFile = new File(
 								TableTest.class.getResource("/" + fact[i].substring("image:".length())).toURI());
-						cell = row.createImageCell((100 / 9f), ImageUtils.readImage(imageFile));
+//						cell = row.createImageCell((100 / 9f), ImageUtils.readImage(imageFile));
 					} catch (final URISyntaxException e) {
 						e.printStackTrace();
 					}
@@ -500,9 +500,9 @@ public class TableTest {
 
 					// Set colors
 					if (fact[i].contains("beer"))
-						cell.setFillColor(Color.yellow);
+						cell.setFillAWTColor(AWTColor.yellow);
 					if (fact[i].contains("champion"))
-						cell.setTextColor(Color.GREEN);
+						cell.setTextAWTColor(AWTColor.GREEN);
 				}
 
 			}
@@ -1137,7 +1137,7 @@ public class TableTest {
 		// draw page title
 		PageContentStreamOptimized cos = new PageContentStreamOptimized(new PDPageContentStream(doc, page));
 		PDStreamUtils.write(cos, "Welcome to your first borderless table", PDType1Font.HELVETICA_BOLD, 14, 15, yStart,
-				Color.BLACK);
+				AWTColor.BLACK);
 		cos.close();
 
 		yStart -= FontUtils.getHeight(PDType1Font.HELVETICA_BOLD, 14) + 15;

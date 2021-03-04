@@ -12,7 +12,7 @@ import be.quodlibet.boxable.utils.FontUtils;
 import be.quodlibet.boxable.utils.PDStreamUtils;
 import be.quodlibet.boxable.utils.PageContentStreamOptimized;
 import static com.google.common.base.Preconditions.checkNotNull;
-import java.awt.Color;
+import org.apache.harmony.awt.AWTColor;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -196,7 +196,7 @@ public abstract class Table<T extends PDPage> {
 
 			if (drawDebug) {
 				// margin
-				PDStreamUtils.rect(tableContentStream, margin, yStart, width, headerBottomMargin, Color.CYAN);
+				PDStreamUtils.rect(tableContentStream, margin, yStart, width, headerBottomMargin, AWTColor.CYAN);
 			}
 		}
 
@@ -446,17 +446,17 @@ public abstract class Table<T extends PDPage> {
 					// cells
 					// left
 					// PDStreamUtils.rect(tableContentStream, cursorX, yStart,
-					// 5, cell.getHeight(), Color.GREEN);
+					// 5, cell.getHeight(), AWTColor.GREEN);
 					// top
 					// PDStreamUtils.rect(tableContentStream, cursorX, yStart,
-					// cell.getWidth(), 5 , Color.GREEN);
+					// cell.getWidth(), 5 , AWTColor.GREEN);
 					// bottom
 					// PDStreamUtils.rect(tableContentStream, cursorX, yStart -
-					// cell.getHeight(), cell.getWidth(), -5 , Color.GREEN);
+					// cell.getHeight(), cell.getWidth(), -5 , AWTColor.GREEN);
 					// right
 					// PDStreamUtils.rect(tableContentStream, cursorX +
 					// cell.getWidth() - 5, yStart, 5, cell.getHeight(),
-					// Color.GREEN);
+					// AWTColor.GREEN);
 
 					cursorY = yStart - cell.getInnerHeight() - cell.getTopPadding()
 							- (cell.getTopBorder() != null ? cell.getTopBorder().getWidth() : 0);
@@ -495,17 +495,17 @@ public abstract class Table<T extends PDPage> {
 					// cells
 					// left
 					// PDStreamUtils.rect(tableContentStream, cursorX, yStart,
-					// 5, cell.getHeight(), Color.RED);
+					// 5, cell.getHeight(), AWTColor.RED);
 					// top
 					// PDStreamUtils.rect(tableContentStream, cursorX, yStart,
-					// cell.getWidth(), 5 , Color.RED);
+					// cell.getWidth(), 5 , AWTColor.RED);
 					// bottom
 					// PDStreamUtils.rect(tableContentStream, cursorX, yStart -
-					// cell.getHeight(), cell.getWidth(), -5 , Color.RED);
+					// cell.getHeight(), cell.getWidth(), -5 , AWTColor.RED);
 					// right
 					// PDStreamUtils.rect(tableContentStream, cursorX +
 					// cell.getWidth() - 5, yStart, 5, cell.getHeight(),
-					// Color.RED);
+					// AWTColor.RED);
 
 					// position at top of current cell descending by font height
 					// - font descent, because we are
@@ -517,13 +517,13 @@ public abstract class Table<T extends PDPage> {
 					if (drawDebug) {
 						// @formatter:off
 						// top padding
-						PDStreamUtils.rect(tableContentStream, cursorX + (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()), yStart - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()), cell.getWidth() - (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()) - (cell.getRightBorder() == null ? 0 : cell.getRightBorder().getWidth()), cell.getTopPadding(), Color.RED);
+						PDStreamUtils.rect(tableContentStream, cursorX + (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()), yStart - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()), cell.getWidth() - (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()) - (cell.getRightBorder() == null ? 0 : cell.getRightBorder().getWidth()), cell.getTopPadding(), AWTColor.RED);
 						// bottom padding
-						PDStreamUtils.rect(tableContentStream, cursorX + (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()), yStart - cell.getHeight() +  (cell.getBottomBorder() == null ? 0 : cell.getBottomBorder().getWidth()) + cell.getBottomPadding(), cell.getWidth() - (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()) - (cell.getRightBorder() == null ? 0 : cell.getRightBorder().getWidth()), cell.getBottomPadding(), Color.RED);
+						PDStreamUtils.rect(tableContentStream, cursorX + (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()), yStart - cell.getHeight() +  (cell.getBottomBorder() == null ? 0 : cell.getBottomBorder().getWidth()) + cell.getBottomPadding(), cell.getWidth() - (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()) - (cell.getRightBorder() == null ? 0 : cell.getRightBorder().getWidth()), cell.getBottomPadding(), AWTColor.RED);
 						// left padding
-						PDStreamUtils.rect(tableContentStream, cursorX + (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()), yStart - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()), cell.getLeftPadding(), cell.getHeight() - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()) - (cell.getBottomBorder() == null ? 0 : cell.getBottomBorder().getWidth()), Color.RED);
+						PDStreamUtils.rect(tableContentStream, cursorX + (cell.getLeftBorder() == null ? 0 : cell.getLeftBorder().getWidth()), yStart - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()), cell.getLeftPadding(), cell.getHeight() - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()) - (cell.getBottomBorder() == null ? 0 : cell.getBottomBorder().getWidth()), AWTColor.RED);
 						// right padding
-						PDStreamUtils.rect(tableContentStream, cursorX + cell.getWidth() - (cell.getRightBorder() == null ? 0 : cell.getRightBorder().getWidth()) , yStart - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()), -cell.getRightPadding(), cell.getHeight() - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()) - (cell.getBottomBorder() == null ? 0 : cell.getBottomBorder().getWidth()), Color.RED);
+						PDStreamUtils.rect(tableContentStream, cursorX + cell.getWidth() - (cell.getRightBorder() == null ? 0 : cell.getRightBorder().getWidth()) , yStart - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()), -cell.getRightPadding(), cell.getHeight() - (cell.getTopBorder() == null ? 0 : cell.getTopBorder().getWidth()) - (cell.getBottomBorder() == null ? 0 : cell.getBottomBorder().getWidth()), AWTColor.RED);
 						// @formatter:on
 					}
 
@@ -564,7 +564,7 @@ public abstract class Table<T extends PDPage> {
 				float lineStartX = cursorX;
 				float lineStartY = cursorY;
 
-				this.tableContentStream.setNonStrokingColor(cell.getTextColor());
+				this.tableContentStream.setNonStrokingAWTColor(cell.getTextAWTColor());
 
 				int italicCounter = 0;
 				int boldCounter = 0;
@@ -648,7 +648,7 @@ public abstract class Table<T extends PDPage> {
 								PDStreamUtils.rect(tableContentStream, cursorX + halfHeight, cursorY,
 										token.getWidth(currentFont) / 1000 * cell.getFontSize(),
                                         widthOfSpace / 1000 * cell.getFontSize(),
-										cell.getTextColor());
+										cell.getTextAWTColor());
 								// move cursorY for two characters (one for
 								// bullet, one for space after bullet)
 								cursorY += 2 * widthOfSpace / 1000 * cell.getFontSize();
@@ -656,7 +656,7 @@ public abstract class Table<T extends PDPage> {
 								PDStreamUtils.rect(tableContentStream, cursorX, cursorY + halfHeight,
 										token.getWidth(currentFont) / 1000 * cell.getFontSize(),
                                         widthOfSpace / 1000 * cell.getFontSize(),
-										cell.getTextColor());
+										cell.getTextAWTColor());
 								// move cursorX for two characters (one for
 								// bullet, one for space after bullet)
 								cursorX += 2 * widthOfSpace / 1000 * cell.getFontSize();
@@ -707,7 +707,7 @@ public abstract class Table<T extends PDPage> {
 			float cellWidth = cellIterator.hasNext()
                     ? cell.getWidth()
                     : this.width - (xStart - margin);
-			fillCellColor(cell, yStart, xStart, rowHeight, cellWidth);
+			fillCellAWTColor(cell, yStart, xStart, rowHeight, cellWidth);
 
 			drawCellBorders(rowHeight, cell, xStart);
 
@@ -758,11 +758,11 @@ public abstract class Table<T extends PDPage> {
 		tableContentStream.stroke();
 	}
 
-	private void fillCellColor(Cell<T> cell, float yStart, float xStart, float rowHeight, float cellWidth)
+	private void fillCellAWTColor(Cell<T> cell, float yStart, float xStart, float rowHeight, float cellWidth)
 			throws IOException {
 
-		if (cell.getFillColor() != null) {
-			this.tableContentStream.setNonStrokingColor(cell.getFillColor());
+		if (cell.getFillAWTColor() != null) {
+			this.tableContentStream.setNonStrokingAWTColor(cell.getFillAWTColor());
 
 			// y start is bottom pos
 			yStart = yStart - rowHeight;

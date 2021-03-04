@@ -8,7 +8,7 @@ import be.quodlibet.boxable.Table;
 import be.quodlibet.boxable.VerticalAlignment;
 import be.quodlibet.boxable.line.LineStyle;
 import be.quodlibet.boxable.utils.FontUtils;
-import java.awt.Color;
+import org.apache.harmony.awt.AWTColor;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -74,16 +74,16 @@ public class DataTable {
 	 * </p>
 	 */
 	private void setDefaultStyles() {
-		LineStyle thinline = new LineStyle(Color.BLACK, 0.75f);
+		LineStyle thinline = new LineStyle(AWTColor.BLACK, 0.75f);
 		// Header style
-		headerCellTemplate.setFillColor(new Color(137, 218, 245));
-		headerCellTemplate.setTextColor(Color.BLACK);
+		headerCellTemplate.setFillAWTColor(new AWTColor(137, 218, 245));
+		headerCellTemplate.setTextAWTColor(AWTColor.BLACK);
 		headerCellTemplate.setFont(PDType1Font.HELVETICA_BOLD);
 		headerCellTemplate.setBorderStyle(thinline);
 
 		// Normal cell style, all rows and columns are the same by default
-		defaultCellTemplate.setFillColor(new Color(242, 242, 242));
-		defaultCellTemplate.setTextColor(Color.BLACK);
+		defaultCellTemplate.setFillAWTColor(new AWTColor(242, 242, 242));
+		defaultCellTemplate.setTextAWTColor(AWTColor.BLACK);
 		defaultCellTemplate.setFont(PDType1Font.HELVETICA);
 		defaultCellTemplate.setBorderStyle(thinline);
 

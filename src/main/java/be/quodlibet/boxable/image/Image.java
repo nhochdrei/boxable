@@ -1,8 +1,8 @@
 package be.quodlibet.boxable.image;
 
+import android.graphics.Bitmap;
 import be.quodlibet.boxable.utils.ImageUtils;
 import be.quodlibet.boxable.utils.PageContentStreamOptimized;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -11,7 +11,7 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 public class Image {
 
-	private final BufferedImage image;
+	private final Bitmap image;
 
 	private float width;
 
@@ -28,19 +28,19 @@ public class Image {
 	 * </p>
 	 *
 	 * @param image
-	 *            {@link BufferedImage}
+	 *            {@link Bitmap}
 	 */
-	public Image(final BufferedImage image) {
+	public Image(final Bitmap image) {
 		this.image = image;
 		this.width = image.getWidth();
 		this.height = image.getHeight();
 	}
 
-	public Image(final BufferedImage image, float dpi) {
+	public Image(final Bitmap image, float dpi) {
 		this(image, dpi, dpi);
 	}
 
-	public Image(final BufferedImage image, float dpiX, float dpiY) {
+	public Image(final Bitmap image, float dpiX, float dpiY) {
 		this.image = image;
 		this.width = image.getWidth();
 		this.height = image.getHeight();

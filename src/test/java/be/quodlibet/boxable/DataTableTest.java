@@ -2,7 +2,7 @@ package be.quodlibet.boxable;
 
 import be.quodlibet.boxable.datatable.DataTable;
 import com.google.common.io.Files;
-import java.awt.Color;
+import org.apache.harmony.awt.AWTColor;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -199,11 +199,11 @@ public class DataTableTest
         //Add a few things to the table that's not coming from the csv file
         Row h1 = dataTable.createRow(0f);
         Cell c1 = h1.createCell(100, "Electricity Prices by type of user");
-        c1.setFillColor(new Color(144, 195, 212));
+        c1.setFillAWTColor(new AWTColor(144, 195, 212));
         dataTable.addHeaderRow(h1);
         Row h2 = dataTable.createRow(0f);
         Cell c2 = h2.createCell(100, "Eur per kWh for Medium Size Households.<br/>Source <i>http://ec.europa.eu/eurostat/tgm/table.do?tab=table&init=1&plugin=1&language=en&pcode=ten00117</i>");
-        c2.setFillColor(new Color(175, 212, 224));
+        c2.setFillAWTColor(new AWTColor(175, 212, 224));
         dataTable.addHeaderRow(h2);
         DataTable t = new DataTable(dataTable, page);
         t.addCsvToTable(data, DataTable.HASHEADER, ';');
@@ -239,22 +239,22 @@ public class DataTableTest
         //Add a few things to the table that's not coming from the csv file
         Row h1 = dataTable.createRow(0f);
         Cell c1 = h1.createCell(100, "Electricity Prices by type of user");
-        c1.setFillColor(new Color(144, 195, 212));
+        c1.setFillAWTColor(new AWTColor(144, 195, 212));
         dataTable.addHeaderRow(h1);
         Row h2 = dataTable.createRow(0f);
         Cell c2 = h2.createCell(100, "Eur per kWh for Medium Size Households.<br/>Source <i>http://ec.europa.eu/eurostat/tgm/table.do?tab=table&init=1&plugin=1&language=en&pcode=ten00117</i>");
-        c2.setFillColor(new Color(175, 212, 224));
+        c2.setFillAWTColor(new AWTColor(175, 212, 224));
         dataTable.addHeaderRow(h2);
         DataTable t = new DataTable(dataTable, page);
         //set the style template for header cells
-        t.getHeaderCellTemplate().setFillColor(new Color(13, 164, 214));
+        t.getHeaderCellTemplate().setFillAWTColor(new AWTColor(13, 164, 214));
         //set the style template for first column
-        t.getFirstColumnCellTemplate().setFillColor(new Color(13, 164, 214));
+        t.getFirstColumnCellTemplate().setFillAWTColor(new AWTColor(13, 164, 214));
         //set the style template for last column
-        t.getLastColumnCellTemplate().setFillColor(new Color(144, 195, 212));
+        t.getLastColumnCellTemplate().setFillAWTColor(new AWTColor(144, 195, 212));
         //set the style template for normal, data columns
-        t.getDataCellTemplateEven().setFillColor(Color.WHITE);
-        t.getDataCellTemplateOdd().setFillColor(new Color(250, 242, 242));
+        t.getDataCellTemplateEven().setFillAWTColor(AWTColor.WHITE);
+        t.getDataCellTemplateOdd().setFillAWTColor(new AWTColor(250, 242, 242));
 
         t.addCsvToTable(data, DataTable.HASHEADER, ';');
 

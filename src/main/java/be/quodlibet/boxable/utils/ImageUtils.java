@@ -1,12 +1,5 @@
 package be.quodlibet.boxable.utils;
 
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import be.quodlibet.boxable.image.Image;
 
 /**
@@ -25,22 +18,7 @@ public class ImageUtils {
 
 	/**
 	 * <p>
-	 * Simple reading image from file
-	 * </p>
-	 * 
-	 * @param imageFile
-	 *            {@link File} from which image will be loaded
-	 * @return {@link Image}
-	 * @throws IOException if loading image fails
-	 */
-	public static Image readImage(File imageFile) throws IOException {
-		final BufferedImage bufferedImage = ImageIO.read(imageFile);
-		return new Image(bufferedImage);
-	}
-
-	/**
-	 * <p>
-	 * Provide an ability to scale {@link Image} on desired {@link Dimension}
+	 * Provide an ability to scale {@link Image} on desired Dimension
 	 * </p>
 	 * 
 	 * @param imageWidth Original image width

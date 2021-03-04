@@ -5,7 +5,7 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import org.apache.pdfbox.util.Matrix;
 
-import java.awt.Color;
+import org.apache.harmony.awt.AWTColor;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -89,21 +89,21 @@ public class PageContentStreamOptimized {
         pageContentStream.drawImage(image, x, y, width, height);
     }
 
-    private Color currentStrokingColor;
+    private AWTColor currentStrokingAWTColor;
 
-    public void setStrokingColor(Color color) throws IOException {
-        if (color != currentStrokingColor) {
+    public void setStrokingAWTColor(AWTColor color) throws IOException {
+        if (color != currentStrokingAWTColor) {
             pageContentStream.setStrokingColor(color);
-            currentStrokingColor = color;
+            currentStrokingAWTColor = color;
         }
     }
 
-    private Color currentNonStrokingColor;
+    private AWTColor currentNonStrokingAWTColor;
 
-    public void setNonStrokingColor(Color color) throws IOException {
-        if (color != currentNonStrokingColor) {
+    public void setNonStrokingAWTColor(AWTColor color) throws IOException {
+        if (color != currentNonStrokingAWTColor) {
             pageContentStream.setNonStrokingColor(color);
-            currentNonStrokingColor = color;
+            currentNonStrokingAWTColor = color;
         }
     }
 

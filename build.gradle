@@ -26,7 +26,8 @@ repositories {
 }
 
 dependencies {
-	compile 'org.apache.pdfbox:pdfbox:2.0.3'
+	compileOnly 'com.google.android:android:4.1.1.4'
+	compile 'com.nhochdrei.pdfbox:pdfbox-android:2.0.18'
 	compile 'org.slf4j:slf4j-api:1.7.21'
 	compile 'com.google.guava:guava:20.0'
 	compile 'org.apache.commons:commons-csv:1.4'

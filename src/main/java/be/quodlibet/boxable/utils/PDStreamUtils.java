@@ -1,6 +1,6 @@
 package be.quodlibet.boxable.utils;
 
-import java.awt.Color;
+import org.apache.harmony.awt.AWTColor;
 import java.io.IOException;
 
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -41,15 +41,15 @@ public final class PDStreamUtils {
 	 * @param y
 	 *            Start Y coordinate for text.
 	 * @param color
-	 *            Color of the text
+	 *            AWTColor of the text
 	 */
 	public static void write(final PageContentStreamOptimized stream, final String text, final PDFont font,
-			final float fontSize, final float x, final float y, final Color color) {
+			final float fontSize, final float x, final float y, final AWTColor color) {
 		try {
 			stream.setFont(font, fontSize);
 			// we want to position our text on his baseline
 			stream.newLineAt(x, y - FontUtils.getDescent(font, fontSize) - FontUtils.getHeight(font, fontSize));
-			stream.setNonStrokingColor(color);
+			stream.setNonStrokingAWTColor(color);
 			stream.showText(text);
 		} catch (final IOException e) {
 			throw new IllegalStateException("Unable to write text", e);
@@ -72,12 +72,12 @@ public final class PDStreamUtils {
 	 * @param height
 	 *            Height of rectangle
 	 * @param color
-	 *            Color of the text
+	 *            AWTColor of the text
 	 */
 	public static void rect(final PageContentStreamOptimized stream, final float x, final float y, final float width,
-			final float height, final Color color) {
+			final float height, final AWTColor color) {
 		try {
-			stream.setNonStrokingColor(color);
+			stream.setNonStrokingAWTColor(color);
 			// negative height because we want to draw down (not up!)
 			stream.addRect(x, y, width, -height);
 			stream.fill();
@@ -106,12 +106,12 @@ public final class PDStreamUtils {
 	public static void rectFontMetrics(final PageContentStreamOptimized stream, final float x, final float y,
 			final PDFont font, final float fontSize) {
 		// height
-		PDStreamUtils.rect(stream, x, y, 3, FontUtils.getHeight(font, fontSize), Color.BLUE);
+		PDStreamUtils.rect(stream, x, y, 3, FontUtils.getHeight(font, fontSize), AWTColor.BLUE);
 		// ascent
-		PDStreamUtils.rect(stream, x + 3, y, 3, FontUtils.getAscent(font, fontSize), Color.CYAN);
+		PDStreamUtils.rect(stream, x + 3, y, 3, FontUtils.getAscent(font, fontSize), AWTColor.CYAN);
 		// descent
 		PDStreamUtils.rect(stream, x + 3, y - FontUtils.getHeight(font, fontSize), 3, FontUtils.getDescent(font, 14),
-				Color.GREEN);
+				AWTColor.GREEN);
 	}
 
 	/**
@@ -127,7 +127,7 @@ public final class PDStreamUtils {
 	 * @throws IOException If the content stream could not be written or the line color cannot be retrieved.
 	 */
 	public static void setLineStyles(final PageContentStreamOptimized stream, final LineStyle line) throws IOException {
-		stream.setStrokingColor(line.getColor());
+		stream.setStrokingAWTColor(line.getAWTColor());
 		stream.setLineWidth(line.getWidth());
 		stream.setLineCapStyle(0);
 		if (line.getDashArray() != null) {

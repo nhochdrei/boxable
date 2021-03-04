@@ -4,7 +4,7 @@
  */
 package be.quodlibet.boxable;
 
-import java.awt.Color;
+import org.apache.harmony.awt.AWTColor;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +37,7 @@ public class Paragraph {
 	private final WrappingFunction wrappingFunction;
 	private HorizontalAlignment align;
 	private TextType textType;
-	private Color color;
+	private AWTColor color;
 	private float lineSpacing;
 
 	private final static int DEFAULT_TAB = 4;
@@ -71,16 +71,16 @@ public class Paragraph {
 
 	public Paragraph(String text, PDFont font, float fontSize, float width, final HorizontalAlignment align,
 			WrappingFunction wrappingFunction) {
-		this(text, font, fontSize, width, align, Color.BLACK, (TextType) null, wrappingFunction);
+		this(text, font, fontSize, width, align, AWTColor.BLACK, (TextType) null, wrappingFunction);
 	}
 
 	public Paragraph(String text, PDFont font, float fontSize, float width, final HorizontalAlignment align,
-			final Color color, final TextType textType, WrappingFunction wrappingFunction) {
+			final AWTColor color, final TextType textType, WrappingFunction wrappingFunction) {
 		this(text, font, fontSize, width, align, color, textType, wrappingFunction, 1);
 	}
 
 	public Paragraph(String text, PDFont font, float fontSize, float width, final HorizontalAlignment align,
-			final Color color, final TextType textType, WrappingFunction wrappingFunction, float lineSpacing) {
+			final AWTColor color, final TextType textType, WrappingFunction wrappingFunction, float lineSpacing) {
 		this.color = color;
 		this.text = text;
 		this.font = font;
@@ -560,7 +560,7 @@ public class Paragraph {
 			PDStreamUtils.rectFontMetrics(stream, cursorX, cursorY, font, fontSize);
 
 			// width
-			PDStreamUtils.rect(stream, cursorX, cursorY, width, 1, Color.RED);
+			PDStreamUtils.rect(stream, cursorX, cursorY, width, 1, AWTColor.RED);
 		}
 
 		for (String line : getLines()) {
@@ -673,21 +673,21 @@ public class Paragraph {
 	 * @deprecated This method will be removed in a future release
 	 * @param color
 	 *            {@code int} rgb value for color
-	 * @return Paragraph's {@link Color}
+	 * @return Paragraph's {@link AWTColor}
 	 */
 	@Deprecated
-	public Paragraph withColor(int color) {
-		this.color = new Color(color);
+	public Paragraph withAWTColor(int color) {
+		this.color = new AWTColor(color);
 		return this;
 	}
 
 	/**
 	 * @deprecated This method will be replaced by
-	 *             {@code public Color getColor()} in a future release
-	 * @return Paragraph's {@link Color}
+	 *             {@code public AWTColor getAWTColor()} in a future release
+	 * @return Paragraph's {@link AWTColor}
 	 */
 	@Deprecated
-	public int getColor() {
+	public int getAWTColor() {
 		return color.getRGB();
 	}
 
